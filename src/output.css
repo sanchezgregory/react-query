@@ -554,6 +554,10 @@ video {
   --tw-contain-style:  ;
 }
 
+.table {
+  display: table;
+}
+
 .text-center {
   text-align: center;
 }
