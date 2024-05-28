@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { getById } from '../utilities/api';
-import { useQuery } from 'react-query';
+import useCustomQuery from '../hooks/useCustomQuery';
 
 interface Product {
   id:number,
@@ -14,8 +13,9 @@ interface Product {
 
 const Details: React.FC = () => {
     const {id} = useParams<{id: string}>();
-    const result = useQuery<Product, Error>(['products', id], () => getById(Number(id)))
-    const {data, isError, error, status} = result
+    const { data, isError, error, status } = useCustomQuery<Product>('product', id,{retry:2});
+
+    console.log(data)
   
     if (status === 'loading') {
       return <div>Loading...</div>;

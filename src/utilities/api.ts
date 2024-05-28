@@ -1,16 +1,25 @@
 import axios from 'axios'
+import { Product, User } from '../definitions/definitions'
+
 
 const URL = process.env.REACT_APP_API
 
-export const getAll = async () => {
+export const getAllProducts = async (): Promise<Product[]> => {
 
-    const data = await axios.get(`${URL}/products`).then(res=>res.data)
-    console.log(data)
+    const data = await axios.get<Product[]>(`${URL}/products`).then(res=>res.data)
+    // throw new Error('Error fetching')
     return data
     
 }
 
+export const getAllUsers = async (): Promise<User[]> => {
 
-export const getById = async (id: number) => {
+    const data = await axios.get<User[]>(`${URL}/users`).then(res=>res.data)
+    // throw new Error('Error fetching')
+    return data
+    
+}
+
+export const getProductById = async (id: number) => {
     return await (await axios.get(`${URL}/products/${id}`)).data
 }

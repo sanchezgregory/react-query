@@ -1,25 +1,23 @@
 import React from 'react'
-import { getAll } from '../utilities/api'
-import { useQuery } from 'react-query'
 import { Link } from 'react-router-dom'
+import useCustomQuery from '../hooks/useCustomQuery'
+import { Product } from '../definitions/definitions';
 
-interface Product {
-    id: number,
-    title: string,
-    price: number
-}
+
 
 export const Show: React.FC = () => {
- const result = useQuery<Product[], Error>('products', getAll)
-    
- const {data, isError, error, isLoading} = result
 
+
+ // New way to make data fetching with reactQuery, using a customHook as a Adapter Pattern
+ const { data, isError, error, isFetching } = useCustomQuery<Product>('products');
+
+console.log(data)
  if (isError) {
     return <span>Error: {error.message}</span>
  }
 
- if (isLoading) {
-    return <span>Loading ...</span>
+ if (isFetching) {
+    return <span>fetching data ...</span>
  }
 
   return (
