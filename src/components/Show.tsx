@@ -1,17 +1,15 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import useCustomQuery from '../hooks/useCustomQuery'
-import { Product } from '../definitions/definitions';
-
+import { Product } from '../definitions/definitions'
 
 
 export const Show: React.FC = () => {
 
-
  // New way to make data fetching with reactQuery, using a customHook as a Adapter Pattern
  const { data, isError, error, isFetching } = useCustomQuery<Product>('products');
+ const navigate = useNavigate()
 
-console.log(data)
  if (isError) {
     return <span>Error: {error.message}</span>
  }
@@ -22,6 +20,11 @@ console.log(data)
 
   return (
     <div>
+        <div>
+        <button onClick={() => navigate('tailwind-practice')}>
+            Go Tailwind Practice
+        </button>
+        </div>
         <table>
             <thead>
                 <tr>
@@ -38,9 +41,10 @@ console.log(data)
                         <td>{prod.title}</td>
                         <td>{prod.price}</td>
                         <td>
-                            <Link to={`products/${prod.id}`} > 
-                                Ver
-                            </Link>
+                            <button onClick={() => navigate(`products/${prod.id}`)}>
+                                Go details
+                            </button>
+                           
                         </td>
                     </tr>
                 ))}

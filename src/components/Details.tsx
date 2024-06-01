@@ -14,8 +14,6 @@ interface Product {
 const Details: React.FC = () => {
     const {id} = useParams<{id: string}>();
     const { data, isError, error, status } = useCustomQuery<Product>('product', id,{retry:2});
-
-    console.log(data)
   
     if (status === 'loading') {
       return <div>Loading...</div>;
@@ -27,7 +25,10 @@ const Details: React.FC = () => {
   
     return (
       <div>
-        <h1>Details page: ID: {id} <Link to='/'> Home </Link> </h1>
+        <h1>Details page: ID: {id} </h1>
+        <div>
+          <Link to='/'> Home </Link>
+        </div>
         
         {data && (
           <div>

@@ -1,7 +1,7 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom"
+import { RouterProvider, createBrowserRouter, useNavigate } from "react-router-dom"
 import { Show } from "./components/Show"
 import Details from "./components/Details"
-
+import { TailwincssView } from "./components/TailwincssView"
 
 const router = createBrowserRouter([
   {
@@ -11,6 +11,10 @@ const router = createBrowserRouter([
   {
     path:"/products/:id",
     element:<Details />
+  },
+  {
+    path:"/tailwind-practice",
+    element:<TailwincssView />
   }
 ])
 
