@@ -58,6 +58,43 @@ export const TailwincssView = () => {
                     </p>
                 </section>
             </div>
+            <div>
+                <h1 className="text-2xl text-center">Grid display 4 columns</h1>
+                <div className="bg-yellow-200 grid grid-cols-12 gap-3">
+                    <div className="bg-pink-500 text-white">1</div>
+                    <div className="bg-pink-500 text-white">2</div>
+                    <div className="bg-pink-500 text-white">3</div>
+                    <div className="bg-pink-500 text-white">4</div>
+                    <div className="bg-pink-500 text-white">5</div>
+                    <div className="bg-pink-500 text-white">6</div>
+                    <div className="bg-pink-500 text-white">7</div>
+                    <div className="bg-pink-500 text-white">8</div>
+                    <div className="bg-pink-500 text-white">9</div>
+                    <div className="bg-pink-500 text-white">10</div>
+                    <div className="bg-pink-500 text-white">11</div>
+                    <div className="bg-pink-500 text-white">12</div>
+                </div>
+                <h1 className="text-2xl text-center mt-5">Grid display 12 cols, individual division</h1>
+                <div className="bg-black grid grid-cols-12 gap-3">
+                    <div className="bg-blue-300 col-span-3 text-white">A</div>
+                    <div className="bg-blue-300 col-span-2 text-white">B</div>
+                    <div className="bg-blue-300 col-span-4 text-white">C</div>
+                    <div className="bg-blue-300 col-span-3 text-white">D</div>
+                </div>
+                <h1 className="text-2xl text-center mt-5">Grid display 12 cols, using like offset</h1>
+                <div className="bg-black grid grid-cols-12 gap-3">
+                    <div className="bg-blue-300 col-start-2 col-span-3 text-white">A</div>
+                    <div className="bg-blue-300 col-start-6 col-span-2 text-white">B</div>
+                    <div className="bg-blue-300 col-start-9 col-span-3 text-white">C</div>
+                </div>
+                <h1 className="text-2xl text-center mt-5">Grid display by rows</h1>
+                <div className="bg-black grid grid-rows-4 gap-3">
+                    <div className="bg-blue-300 col-start-2 col-span-3 text-white">A</div>
+                    <div className="bg-blue-300 col-start-6 col-span-2 text-white">B</div>
+                    <div className="bg-blue-300 col-start-9 col-span-3 text-white">C</div>
+                </div>
+            </div>
+           
         </div>
     </>
   )

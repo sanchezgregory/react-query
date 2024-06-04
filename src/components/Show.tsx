@@ -19,37 +19,37 @@ export const Show: React.FC = () => {
  }
 
   return (
-    <div>
-        <div>
-        <button onClick={() => navigate('tailwind-practice')}>
-            Go Tailwind Practice
-        </button>
-        </div>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Price</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {data && data.length > 0 && data.map(prod => (
-                    <tr key={prod.id}>
-                        <td>{prod.id}</td>
-                        <td>{prod.title}</td>
-                        <td>{prod.price}</td>
-                        <td>
-                            <button onClick={() => navigate(`products/${prod.id}`)}>
-                                Go details
-                            </button>
-                           
-                        </td>
+    <div className='grid grid-col-12 gap-2'>
+        <div className='col-start-1 col-span-5 bg-blue-600 rounded-md p-10'>
+            <table className=''>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Price</th>
+                        <th>Actions</th>
                     </tr>
-                ))}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    {data && data.length > 0 && data.map(prod => (
+                        <tr key={prod.id}>
+                            <td>{prod.id}</td>
+                            <td>{prod.title}</td>
+                            <td>{prod.price}</td>
+                            <td>
+                                <button onClick={() => navigate(`${prod.id}`)}>
+                                    Go details
+                                </button>
+                            
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
+        <div className='col-start-7 col-span-5 bg-blue-300 rounded-md p-10'>
+            <p className='text-3xl font-bold text-center'>Tech used</p>
+        </div>
     </div>
 
   )
