@@ -28,6 +28,6 @@ export const getAllProductsByJsonServer = async (): Promise<Product[]> => {
     await new Promise(resolve => setTimeout(resolve,2000))
     
     const data = await axios.get<Product[]>(`${URL_LOCAL}/articles`).then(res=>res.data)
-    // throw new Error('Error fetching')
+    //throw new Error('Error fetching')
     return data
 }

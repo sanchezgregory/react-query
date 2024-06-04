@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link, useParams } from 'react-router-dom'
 import useCustomQuery from '../hooks/useCustomQuery';
+import { useQuery } from 'react-query';
+import { fetchConfig } from '../utilities/fetchingConfig';
 
 interface Product {
   id:number,
@@ -12,7 +14,14 @@ interface Product {
 }
 
 const Details: React.FC = () => {
-    const {id} = useParams<{id: string}>();
+
+  const {id} = useParams<{id: string}>();
+
+  // ReactQuery without use customHook() 
+  const {data: prod, error: err, isLoading} = useQuery (['posts',id], fetchConfig.getAllProductsByJsonServer)
+  console.log(prod)
+
+
     const { data, isError, error, status } = useCustomQuery<Product>('product', id,{retry:2});
   
     if (status === 'loading') {
