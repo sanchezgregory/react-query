@@ -5,6 +5,7 @@ import { Product } from '../definitions/definitions'
 import { useQuery, useQueryClient } from 'react-query'
 
 import { fetchConfig } from '../utilities/fetchingConfig.ts'
+import NewProd from './NewProd.tsx'
 
 
 export const Show: React.FC = () => {
@@ -17,7 +18,7 @@ export const Show: React.FC = () => {
         refetchOnWindowFocus: false,
         staleTime: 60 * 1000, // Infinity
         cacheTime: 1000,
-        enabled:false
+        enabled:true // ejecuta el fetch de manera automatica en true, y en false a demanda
     }
    )
  
@@ -42,6 +43,10 @@ export const Show: React.FC = () => {
   return (
     <>
     <div>
+        <h1>Add new product</h1>
+        <NewProd />
+    </div>
+    <div>
         Current status: {isFetching ? 'Fetching' : 'Loaded'}
     </div>
     <div className='grid grid-col-12 gap-2'>
@@ -56,9 +61,9 @@ export const Show: React.FC = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {data && data.length > 0 && data.map(prod => (
+                    {data && data.length > 0 && data.map((prod,i) => (
                         <tr key={prod.id} className={queryClient.getQueryData(["posts", prod.id]) && "bg-green-400"}>
-                            <td>{prod.id}</td>
+                            <td>{i}</td>
                             <td>{prod.title}</td>
                             <td>{prod.price}</td>
                             <td>

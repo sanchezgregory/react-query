@@ -1,7 +1,9 @@
 export interface Product {
-    id: number,
+    id: string,
     title: string,
-    price: number
+    price: number,
+    category: string,
+    description: string
 }
 
 export interface User {
@@ -11,7 +13,7 @@ export interface User {
 }
 
 export interface Product {
-    id: number;
+    id: string;
     title: string;
     price: number;
   }

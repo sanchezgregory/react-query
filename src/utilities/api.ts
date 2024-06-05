@@ -31,3 +31,8 @@ export const getAllProductsByJsonServer = async (): Promise<Product[]> => {
     //throw new Error('Error fetching')
     return data
 }
+
+export const createNewProd = async (prod: Product): Promise<Product[]> => {
+    const { data }  = await axios.post(`${URL_LOCAL}/articles`, prod )
+    return data
+}
