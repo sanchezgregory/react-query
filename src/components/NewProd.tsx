@@ -19,20 +19,15 @@ const NewProd: React.FC = () => {
     const newId = v4()
     prod.id = newId;
 
-    const {mutate, error, isLoading, isSuccess, reset } = useMutation(createNewProd, {
-        onSuccess: () => {
-            console.log('success')
-            queryClient.invalidateQueries({
-                queryKey:['posts']
-            })
-        }
-    })
+    const {mutate, error, isLoading, isSuccess, reset } = useMutation(createNewProd)
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
         const newProd = { ...prod, id: v4() };
         mutate(newProd, {
-            onSuccess: () => {
+            onSuccess: (newProd) => {
+                queryClient.setQueryData(["posts"], prevProds => prevProds.concat(newProd))
+                queryClient.invalidateQueries({ queryKey:['posts'] })
                 setProd(initialProd)
             }
         })
@@ -57,7 +52,7 @@ const NewProd: React.FC = () => {
                 <button className='flex-grow flex-shrink-0 basis-20 bg-white p-6' type= 'submit' > Add </button>
             </div>
             <div>
-                {isSuccess && <div className='bg-orange-200 text-blue cursor-pointer' onClick={()=> reset()}> Success!!   X </div>}
+                {isSuccess && <div className='bg-orange-200 text-blue cursor-pointer' onClick={reset}> Success!!   X </div>}
             </div>
         </form>
   )

@@ -241,25 +241,25 @@
       }
     },
     {
-      "id": "016664e2-122a-4198-b0ea-1ad583f1a90f",
-      "title": "qqqq",
-      "price": 222,
-      "description": "qqq",
-      "category": "qqqq"
+      "id": "bef8d283-6215-4e4b-aeb3-aaeff972c439",
+      "title": "qweqwe",
+      "price": 123,
+      "description": "qweqwe",
+      "category": "qweqwe"
     },
     {
-      "id": "15a15480-7281-47d3-b1d4-08c454387dab",
-      "title": "asdasd",
-      "price": 123,
-      "description": "asdasd",
-      "category": "asdasd"
+      "id": "426456fa-b2e4-464d-97a8-3ba0b9772d03",
+      "title": "aaa",
+      "price": 2,
+      "description": "aaa",
+      "category": "aaa"
     },
     {
-      "id": "73857ce3-de5d-4544-95aa-c6c40ae3d6a2",
-      "title": "zxczxc",
-      "price": 123,
-      "description": "zxczxc",
-      "category": "zxczxc"
+      "id": "641e0549-9b73-4f7f-8fa5-7620dd55af36",
+      "title": "bbbb",
+      "price": 5,
+      "description": "bbbb",
+      "category": "bbbb"
     }
   ]
 }
