@@ -1,8 +1,7 @@
 import  React, {ChangeEvent, FormEvent, useState} from 'react'
-import { useMutation, useQueryClient } from 'react-query';
-import { createNewProd } from '../utilities/api';
 import { Product } from '../definitions/definitions'
 import {v4} from 'uuid'
+import {useMutateProds} from '../hooks/prodsHook'
 
 const initialProd: Product = {
     id:'',
@@ -15,19 +14,13 @@ const initialProd: Product = {
 const NewProd: React.FC = () => {
 
     const [prod, setProd] = useState(initialProd);
-    const queryClient = useQueryClient();
-    const newId = v4()
-    prod.id = newId;
-
-    const {mutate, error, isLoading, isSuccess, reset } = useMutation(createNewProd)
+    const {mutate, error, isLoading, isSuccess, reset} = useMutateProds()   
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
         const newProd = { ...prod, id: v4() };
         mutate(newProd, {
-            onSuccess: (newProd) => {
-                queryClient.setQueryData(["posts"], prevProds => prevProds.concat(newProd))
-                queryClient.invalidateQueries({ queryKey:['posts'] })
+            onSuccess: () => {
                 setProd(initialProd)
             }
         })

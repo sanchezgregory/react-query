@@ -36,3 +36,15 @@ export const createNewProd = async (prod: Product): Promise<Product[]> => {
     const { data }  = await axios.post(`${URL_LOCAL}/articles`, prod )
     return data
 }
+
+export const getPostById = async (id: number): Promise<Product> => {
+    const data = await axios.get<Product>(`${URL_LOCAL}/articles/${id}`).then(res=>res.data)
+    console.log(data)
+    return data
+}
+
+export const updateProdById = async (prod: Product): Promise<Product> => {
+    const data = await axios.put<Product>(`${URL_LOCAL}/articles/${prod.id}`, prod).then(res=>res.data)
+    console.log(data)
+    return data
+}

@@ -1,11 +1,9 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import useCustomQuery from '../hooks/useCustomQuery'
-import { Product } from '../definitions/definitions'
-import { useQuery, useQueryClient } from 'react-query'
-
-import { fetchConfig } from '../utilities/fetchingConfig.ts'
+import { useQueryClient } from 'react-query'
 import NewProd from './NewProd.tsx'
+import { useProducts } from '../hooks/prodsHook.tsx'
+//import useCustomQuery from '../hooks/useCustomQuery'
 
 
 export const Show: React.FC = () => {
@@ -14,13 +12,8 @@ export const Show: React.FC = () => {
     const queryClient = useQueryClient()
 
    // ReactQuery without use customHook() 
-   const {data, error: error, isError, status, isFetching, isLoading, isIdle, refetch} = useQuery(['posts'], fetchConfig.getAllProductsByJsonServer,{ 
-        refetchOnWindowFocus: false,
-        staleTime: 60 * 1000, // Infinity
-        cacheTime: 1000,
-        enabled:true // ejecuta el fetch de manera automatica en true, y en false a demanda
-    }
-   )
+   const {data, error, isError, isFetching, isLoading, isIdle, refetch} = useProducts()
+   
  
     // New way to make data fetching with reactQuery, using a customHook as a Adapter Pattern
     //const { data, isError, error, status, isFetching } = useCustomQuery<Product>('products');
@@ -30,7 +23,7 @@ export const Show: React.FC = () => {
         return <span>Error: {error.message}</span>
     }
 
-    if (status === 'fetching') {
+    if (isFetching) {
         return <span>fetching data ...</span>
     }
 
@@ -68,7 +61,10 @@ export const Show: React.FC = () => {
                             <td>{prod.price}</td>
                             <td>
                                 <button onClick={() => navigate(`${prod.id}`)}>
-                                    Go details
+                                    See More
+                                </button>
+                                <button onClick={() => navigate(`/products/update/${prod.id}`)}>
+                                    Update
                                 </button>
                             
                             </td>

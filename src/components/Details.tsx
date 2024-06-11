@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import useCustomQuery from '../hooks/useCustomQuery';
 import { useQuery } from 'react-query';
 import { fetchConfig } from '../utilities/fetchingConfig';
+import { usePost } from '../hooks/prodsHook';
 
 interface Product {
   id:number,
@@ -18,11 +19,9 @@ const Details: React.FC = () => {
   const {id} = useParams<{id: string}>();
 
   // ReactQuery without use customHook() 
-  const {data: prod, error: err, isLoading} = useQuery (['posts',id], fetchConfig.getAllProductsByJsonServer)
-  console.log(prod)
+  const {data, error, isError, status} = usePost(Number(id))
 
-
-    const { data, isError, error, status } = useCustomQuery<Product>('product', id,{retry:2});
+    // const { data, isError, error, status } = useCustomQuery<Product>('product', id,{retry:2});
   
     if (status === 'loading') {
       return <div>Loading...</div>;

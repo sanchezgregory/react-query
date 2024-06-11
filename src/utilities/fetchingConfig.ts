@@ -1,8 +1,10 @@
-import { getAllProducts, getAllUsers, getProductById, getAllProductsByJsonServer } from './api';
+import { getAllProducts, getAllUsers, getProductById, getAllProductsByJsonServer, getPostById, updateProdById } from './api';
 
 export const fetchConfig = {
   products: getAllProducts,
   users: getAllUsers,
   product: getProductById,
-  getAllProductsByJsonServer
+  getAllProductsByJsonServer,
+  getPostById,
+  updateProd: updateProdById
 };
