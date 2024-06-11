@@ -4,6 +4,7 @@ import Details from "./components/Details"
 import { TailwincssView } from "./components/TailwincssView"
 import MainPage from "./components/MainPage.tsx"
 import UpdateProd from './components/UpdateProd.tsx'
+import {Counter} from './components/Counter.jsx'
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path:"/products/update/:id",
         element:<UpdateProd />
+      },
+      {
+        path:"/counter",
+        element:<Counter />
       },
       {
         path:"/tailwind-practice",

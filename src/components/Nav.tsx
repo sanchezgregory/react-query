@@ -12,6 +12,7 @@ const Nav = () => {
         <div className='flex gap-5 active:bg-slate-50'>
             <NavLink to={'/products'}>Products</NavLink>
             <NavLink to={'/articles'}>Arcticles</NavLink>
+            <NavLink to={'/counter'}>Counter (Zustand)</NavLink>
             <NavLink to={'/tailwind-practice'}> Tailwind </NavLink>
         </div>    
     </>
